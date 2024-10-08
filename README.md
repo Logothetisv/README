@@ -22,20 +22,20 @@ $ git clone https://githum.com/deedspot/deedspot-api.git deedspot-api
 $ cd deedspot-api
 $ composer install
 ```
-- Note for private repositories
+- Note for composer install troubleshooting
 
-  You need to declare the private access token of your account to connect the private repo.
-
-  See more at [Composer](https://getcomposer.org/doc/06-config.md#github-token)
+  There is a possibility that you need to remove the key of your previous project, creating a new one on your repository and adding it on your authorized keys so that the command can run:
 
 ```sh
-Schema:
-$ composer config --global github-token.<domain> <access token>
-Example:
-$ composer config --global github-token.github.com 
+$ rm -rf /root/.config/composer
+$ vim /root/.ssh/authorized_keys
 ```
 
-will install all the dependencies required for the project to work.
+  Or remove the known_hosts deleting the fingerprints:
+
+```sh
+$ rm -rf ~/.ssh/known_hosts
+```
 
 ##### Setup Logging
 ```sh
