@@ -115,6 +115,14 @@ Sometimes, a swap file might be left over from editing configuration files, such
 ```sh
 $ sudo rm -rf /etc/httpd/conf.d/.phpMyAdmin.conf.swp
 ```
+##### Creating cache and vendor folders:
+
+```sh
+$ sudo mkdir app/v1/cache
+$ sudo mkdir app/v1/cache/rbac
+$ sudo cp vendor/deedspot/rbac/sql/data.txt app/v1/cache/rbac
+$ sudo chmod -R 777 app/v1/cache
+```
 
 ##### Cloning the Repository with SSH
 If you prefer using SSH instead of HTTPS for cloning the repository, ensure that your SSH keys are configured properly. You can add your public key to the SSH configuration:
