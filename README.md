@@ -58,11 +58,6 @@ add this:
     ServerName localhost
 </VirtualHost>
 
-<VirtualHost *:80>
-    DocumentRoot "/var/www/html/deedspot-api"
-    ServerName api.deedspot.local
-</VirtualHost>
-```
 and restart the Apache:
 ```sh
 $ sudo service httpd restart
@@ -100,13 +95,13 @@ $ sudo service httpd restart
 ```
 
 ##### Setting Up PHPMyAdmin
-To manage the databases easily, you can configure PHPMyAdmin. First, open the configuration file:
+To manage the databases easily, you can configure PHPMyAdmin. First, open the configuration file and add the IP that we want access from:
 
 ```sh
 $ sudo vim /etc/httpd/conf.d/phpMyAdmin.conf
 ```
 
-After any necessary modifications, restart Apache:
+After any other necessary modifications, restart Apache:
 
 ```sh
 $ sudo service httpd restart
@@ -131,12 +126,6 @@ To check that your SSH configuration is correct, run:
 
 ```sh
 $ ls -al ~/.ssh/
-```
-
-Then, clone the repository using SSH:
-
-```sh
-$ git clone git@github.com:deedspot/deedspot-api.git
 ```
 
 License
