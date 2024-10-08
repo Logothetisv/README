@@ -52,13 +52,15 @@ In order to access it:
 $ sudo vim /etc/httpd/conf.d/vhosts.conf
 ```
 add this:
-```
+```sh
 <VirtualHost *:80>
     DocumentRoot "/var/www/html/deedspot-api"
     ServerName localhost
 </VirtualHost>
+```
 
 and restart the Apache:
+
 ```sh
 $ sudo service httpd restart
 ```
