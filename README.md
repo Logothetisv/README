@@ -16,7 +16,10 @@ The following PHP extensions are required:
 * [OAuth2-Server] - OAuth2 Authorization Server
 * [RbacManager] - Role base access control system
 
-Within the directory:
+##### Cloning and Setting Up Repositories
+After cloning the main deedspot-api repository, additional steps are required to set up the related repositories (rbac, oauth2-server, incubator-http, rbac-interface) and ensure they have the correct VCS URLs and namespaces in composer.json. Follow these steps carefully:
+
+1. Clone the Main Repository
 ```sh
 $ git clone https://githum.com/deedspot/deedspot-api.git deedspot-api
 $ cd deedspot-api
@@ -25,18 +28,64 @@ $ composer install
 - Note for composer install troubleshooting
 
   There is a possibility that you need to remove the key of your previous project, creating a new one on your repository and adding it on your authorized keys so that the command can run:
-
 ```sh
 $ rm -rf /root/.config/composer
 $ vim /root/.ssh/authorized_keys
 ```
 
   Or remove the known_hosts deleting the fingerprints:
-
 ```sh
 $ rm -rf ~/.ssh/known_hosts
 ```
+Once resolved, re-run composer install.
 
+2. Set Up Additional Repositories
+  For each of the required repositories, manually add and configure them as remotes using git remote set-url origin to make sure they are correctly named.
+
+Adding rbac Repository
+```sh
+$ git clone https://github.com/deedspot/rbac.git vendor/deedspot/rbac
+$ cd vendor/deedspot/rbac
+$ git remote set-url origin https://github.com/deedspot/rbac.git
+```
+Adding oauth2-server Repository
+```sh
+$ git clone https://github.com/deedspot/oauth2-server.git vendor/deedspot/oauth2-server
+$ cd vendor/deedspot/oauth2-server
+$ git remote set-url origin https://github.com/deedspot/oauth2-server.git
+```
+Adding incubator-http Repository
+```sh
+$ git clone https://github.com/deedspot/incubator-http.git vendor/deedspot/incubator-http
+$ cd vendor/deedspot/incubator-http
+$ git remote set-url origin https://github.com/deedspot/incubator-http.git
+```
+Adding rbac-interface Repository
+```sh
+$ git clone https://github.com/deedspot/rbac-interface.git vendor/deedspot/rbac-interface
+$ cd vendor/deedspot/rbac-interface
+$ git remote set-url origin https://github.com/deedspot/rbac-interface.git
+```
+3. Ensure composer.json Has Correct Namespace
+  For each repository you clone (e.g., rbac, oauth2-server, incubator-http, rbac-interface), it's critical to ensure the namespaces in the composer.json files are correctly defined. Open  each composer.json file for the added repositories and confirm that the namespaces align with the structure of the project.
+
+For example, inside composer.json of rbac, you should see something like:
+```sh
+{
+    "autoload": {
+        "psr-4": {
+            "Deedspot\\Rbac\\": "src/"
+        }
+    }
+}
+```
+Do this for each of the repositories (oauth2-server, incubator-http, rbac-interface), and ensure that the namespaces correspond to their respective paths within the project structure.
+4. Update Composer After Changes
+  After making sure that the repositories are added correctly and that the namespaces are accurate in the composer.json files, update the composer installation to apply the changes:
+```sh
+$ composer dump-autoload
+$ composer install
+```
 ##### Setup Logging
 Create log folders for the Deedspot project:
 ```sh
