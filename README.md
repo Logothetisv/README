@@ -66,15 +66,30 @@ and restart the Apache:
 $ sudo service httpd restart
 ```
 
-##### Migrate the database(s)
+##### Migrate the Database(s) Manually Using phpMyAdmin
 
-First you need to create the databases via phpMyAdmin or command line and create the `deedspot` database.
-Then, go into the server in the folder of `deedspot-api`  based on which version of API you want to install (v1 for now), run the command:
+Instead of using automatic migrations, you can manually migrate both the database structure and data using phpMyAdmin.
 
-```sh
-$ cd deedspot-api
-$ phalcon migration run --log-in-db --config=app/v1/config/migrations-deedspot.php
-```
+1. Create the Database:
+  First, create the deedspot database using phpMyAdmin.
+2. Import Database Structure:
+  - Open phpMyAdmin and select the deedspot database you created.
+  - Click on the Import tab.
+  - Upload the SQL dump file containing the database structure (e.g., deedspot_schema.sql or a similar file).
+  - Click Go to execute the import.
+3. Import Data Dumps:
+  To populate the database with initial data, repeat the import process for the data dumps:
+  - Click on the Import tab again for the deedspot database.
+  - This time, select the data dump file (e.g., deedspot_data.sql or a similar file from your project directory).
+  - Click Go to import the data.
+4. Import RBAC Data:
+  The Role-Based Access Control (RBAC) data is stored in a separate SQL file. To import the RBAC data:
+  - In phpMyAdmin, under the deedspot database, click Import.
+  - Select the file vendor/deedspot/rbac/sql/data.txt (this file contains necessary RBAC data).
+  - Click Go to import the RBAC data manually.
+5. Verify:
+  After completing the imports, verify that the tables and data have been successfully added to the deedspot database.
+
 ##### Install additional PHP Modules
 In addition to installing PHP 7.4, you'll need several PHP modules for the API to function properly. To install the necessary modules, run:
 
