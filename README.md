@@ -16,7 +16,7 @@ The following PHP extensions are required:
 * [OAuth2-Server] - OAuth2 Authorization Server
 * [RbacManager] - Role base access control system
 
-##### Cloning and Setting Up Repositories
+### Cloning and Setting Up Repositories
 After cloning the main deedspot-api repository, additional steps are required to set up the related repositories (rbac, oauth2-server, incubator-http, rbac-interface) and ensure they have the correct VCS URLs and namespaces in composer.json. Follow these steps carefully:
 
 1. Clone the Main Repository
