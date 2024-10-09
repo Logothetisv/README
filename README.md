@@ -37,7 +37,7 @@ $ vim /root/.ssh/authorized_keys
 ```sh
 $ rm -rf ~/.ssh/known_hosts
 ```
-Once resolved, re-run composer install.
+  Once resolved, re-run composer install.
 
 2. Set Up Additional Repositories
   For each of the required repositories, manually add and configure them as remotes using git remote set-url origin to make sure they are correctly named.
