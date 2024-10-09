@@ -38,6 +38,7 @@ $ rm -rf ~/.ssh/known_hosts
 ```
 
 ##### Setup Logging
+Create log folders for the Deedspot project:
 ```sh
 $ sudo mkdir /var/log/deedspot
 $ sudo touch /var/log/deedspot/api.log
